@@ -3,11 +3,11 @@ import Form from "../../Components/Home/Form"
 import Temperature from "../Temperature/Temperature"
 import "./Home.style.css"
 import sky from "../../Assets/images/sky.jpg"
-import Header from "../../Components/Home/Custom/Header"
+
 
 const Home = ()=>{
     const [cityName, setCityName] = useState()
-    const [serachCity, setSearchCity] =useState()
+    const [searchCity, setSearchCity] =useState()
     const [latlng, setLatlng] = useState(null)
     const [apiInformation, setApiInformation] = useState()
     
@@ -45,7 +45,7 @@ const Home = ()=>{
     }, [apiInformation]);
 
     useEffect(() => {
-        if(serachCity && apiInformation){
+        if(searchCity && apiInformation){
             var lat;
             var lng;
             var city;
@@ -64,13 +64,13 @@ const Home = ()=>{
                 city
             })
         }
-    }, [serachCity]);
+    }, [searchCity, apiInformation, cityName]);
 
 
   return(
       <>
     <section className="p-top">
-    <img className="border md:w-10/12 rounded-3xl"src={sky}  alt="img1" className="background"/>
+    <img className="border md:w-10/12 rounded-3xl background" src={sky}  alt="background"/>
     <div className="flex justify-center">
     <div className="w-9/12 md:w-7/12 pt-6">
       <Form
